@@ -10,7 +10,7 @@ class PlayerManager(models.Manager):
     def older_player(self):
         return self.all().order_by('date_born')[0]
     
-    def count_suplents(self):
+    def count_substitutes(self):
         return self.filter(titular=False).count()
     
     def avg_age(self):
@@ -18,6 +18,7 @@ class PlayerManager(models.Manager):
                 self.annotate(age=datetime.now().year - ExtractYear('date_born'))
                 .aggregate(models.Avg('age'))
             )
+    
     
     
     

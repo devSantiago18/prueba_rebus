@@ -47,9 +47,11 @@ class TeamApiView(APIView):
     #     return Response(serializer.data)
     
     def get(self, request):
-        team = Team.objects.team_most_players()
-        serializer = TeamSerializer(team)
-        return Response(serializer.data)
+        team = Team.objects.avg_sustitutes_players()
+        #print(team[0].player)
+        #serializer = TeamSerializer(team, many=True)
+        #return Response(serializer.data)
+        return Response({'promedio jugadores por equipo' : team})
     
     def post(self, request, format=None):
         serializer = TeamSerializer(data=request.data)
