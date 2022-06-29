@@ -15,6 +15,8 @@ class Team(models.Model):
         verbose_name_plural = "Teams"
         ordering = ('name',)
 
+
     def __str__(self):
         return self.name
+    
 
