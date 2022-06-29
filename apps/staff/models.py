@@ -1,19 +1,6 @@
 from django.db import models
 from ..teams.models import Team
-from .sources.choices import  COUNTRY_CHOICES
-# Create your models here.
-class RolStaff(models.Model):
-    id_staff = models.AutoField(primary_key=True)
-    rol_description = models.CharField(max_length=250,unique=True)
-    
-    class Meta:
-        db_table = 'rolstaff'
-        verbose_name = "RolStaff"
-        verbose_name_plural = "RolStaffs"
-
-    def __str__(self):
-        return self.name
-
+from .sources.choices import  COUNTRY_CHOICES, ROL_STAFF
 
 
 class CoachingStaff(models.Model):
@@ -22,10 +9,9 @@ class CoachingStaff(models.Model):
     last_name = models.CharField(max_length=250,unique=True)
     date_born = models.DateField()
     nationality = models.CharField(max_length=5, choices=COUNTRY_CHOICES, null=True)
-    rol = models.ForeignKey(RolStaff, on_delete=models.CASCADE)
+    rol = models.CharField(max_length=250, choices=ROL_STAFF)
     create_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)    
-    
+    updated_at = models.DateTimeField(auto_now=True)        
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
 
     class Meta:

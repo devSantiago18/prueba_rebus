@@ -1,3 +1,10 @@
+ROL_STAFF = (
+    ('1', 'técnico'),
+    ('2', 'asistente'),
+    ('3', 'médico'),
+    ('4', 'preparador'),
+)
+
 COUNTRY_CHOICES = (
     ('AND', 'Andorra'),
     ('ARE', 'Emiratos Árabes Unidos'),
