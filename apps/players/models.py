@@ -5,7 +5,7 @@ from .sources.choices import PLAYER_POSITIONS
 # Create your models here.
 class Player(models.Model):
     id = models.AutoField(primary_key=True)
-    player_img = models.ImageField()
+    player_img = models.ImageField(upload_to='img/players')
     name = models.CharField(max_length=50,  verbose_name='Nombre del jugador')
     last_name = models.CharField(max_length=50, verbose_name='Apellido del jugador')
     date_born = models.DateField(verbose_name="Fecha de nacimiento del jugador")

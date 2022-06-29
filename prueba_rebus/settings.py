@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'apps.players',
     'apps.staff',
     
+    'rest_framework'
+    
 ]
 
 MIDDLEWARE = [
