@@ -35,8 +35,8 @@ class TeamsCreateView(CreateAPIView):
         return Team.objects.all()
 
 class TeamDetailView(APIView):
-    def get(self, request, name):
-        team = Team.objects.get(name=name)
+    def get(self, request, id_team):
+        team = Team.objects.get(id_team=id_team)
         serializer = TeamSerializer(team)
         return Response(serializer.data)
 
@@ -54,16 +54,16 @@ class TeamApiView(APIView):
             return Response({"succes":"The team has been created succesfully"}, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-    def put(self, request, name, format=None):
-        team = Team.objects.get(name=name)
+    def put(self, request, id_team, format=None):
+        team = Team.objects.get(id_team=id_team)
         serializer = TeamSerializer(team, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response({"succes":"The team has been updated succesfully"}, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def delete(self, request, name, format=None):
-        team = Team.objects.get(name=name)
+    def delete(self, request, id_team, format=None):
+        team = Team.objects.get(id_team=id_team)
         team.delete()
         return Response({"succes":"The team has been deleted succesfully"}, status=status.HTTP_200_OK)
     
