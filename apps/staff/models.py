@@ -15,7 +15,7 @@ class CoachingStaff(models.Model):
     updated_at = models.DateTimeField(auto_now=True)        
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
     # My managers
-    coachs = StaffCoachManager()
+    objects = StaffCoachManager()
 
     class Meta:
         db_table = 'coachingstaff'

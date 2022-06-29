@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'apps.teams',
     'apps.players',
     'apps.staff',
-    
+    'apps.resumen',
+    # Apps de terceros
     'rest_framework'
     
 ]

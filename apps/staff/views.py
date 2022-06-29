@@ -14,7 +14,7 @@ class StaffDetailView(APIView):
 
 class StaffApiView(APIView):
     def get(self, request):
-        staff = CoachingStaff.coachs.all()
+        staff = CoachingStaff.objects.all()
         serializer = CoachingStaffSerializer(staff, many=True)
         return Response(serializer.data)
     

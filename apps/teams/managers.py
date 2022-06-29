@@ -1,5 +1,4 @@
 from django.db import models
-from django.db import models
 class TeamsManager(models.Manager):
         
     def team_most_players(self):
