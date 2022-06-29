@@ -1,4 +1,5 @@
 from django.db import models
+from .managers import TeamsManager
 class Team(models.Model):
     id_team = models.AutoField(primary_key=True)
     name = models.CharField(max_length=250, unique=True, null=False)
@@ -7,6 +8,7 @@ class Team(models.Model):
     create_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    objects = TeamsManager()
     class Meta:
         db_table = 'team'
         verbose_name = "Team"

@@ -1,12 +1,12 @@
 from django.shortcuts import render
-
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
+from datetime import date, timedelta, datetime
 from .models import Player
 from .serializers import PlayerSerializer
-
+from django.db import models
 
 class PlayerDetailView(APIView):
     def get(self, request, id, *args, **kwargs):
@@ -16,10 +16,18 @@ class PlayerDetailView(APIView):
 
 class PlayerApiView(APIView):
     def get(self, request):
-        player = Player.objects.all()
-        print("DFASDFKSA ", player)
-        serializer = PlayerSerializer(player, many=True)
-        return Response(serializer.data)
+        player = Player.objects.avg_age()
+        # print(player[0].avg_age)
+        # serializer = PlayerSerializer(player, many=True)
+        # return Response(serializer.data)
+        return Response({'promedio de edad': player})
+        
+    
+    
+    # def get(self, request):
+    #     player = Player.objects.all()
+    #     serializer = PlayerSerializer(player, many=True)
+    #     return Response(serializer.data)
 
 
     def post(self, request, *args, **kwargs):

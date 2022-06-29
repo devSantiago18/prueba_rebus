@@ -1,4 +1,5 @@
 from django.db import models
+from .managers import StaffCoachManager
 from ..teams.models import Team
 from .sources.choices import  COUNTRY_CHOICES, ROL_STAFF
 
@@ -13,6 +14,8 @@ class CoachingStaff(models.Model):
     create_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)        
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
+    # My managers
+    coachs = StaffCoachManager()
 
     class Meta:
         db_table = 'coachingstaff'

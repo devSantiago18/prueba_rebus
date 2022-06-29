@@ -5,4 +5,4 @@ class CoachingStaffSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = CoachingStaff
-        field = '__all__'
+        fields = '__all__'

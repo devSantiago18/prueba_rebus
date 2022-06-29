@@ -1,6 +1,5 @@
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
-
 # rest framework
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -42,9 +41,14 @@ class TeamDetailView(APIView):
 
 
 class TeamApiView(APIView):
+    # def get(self, request):
+    #     team = Team.objects.all()
+    #     serializer = TeamSerializer(team, many=True)
+    #     return Response(serializer.data)
+    
     def get(self, request):
-        team = Team.objects.all()
-        serializer = TeamSerializer(team, many=True)
+        team = Team.objects.team_most_players()
+        serializer = TeamSerializer(team)
         return Response(serializer.data)
     
     def post(self, request, format=None):
