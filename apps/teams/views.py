@@ -1,6 +1,3 @@
-from django.http import HttpResponse
-from django.shortcuts import get_object_or_404, render
-# rest framework
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.generics import ListAPIView, CreateAPIView
@@ -8,19 +5,18 @@ from rest_framework import status
 from .models import Team
 from .serializers import TeamSerializer
 
-
-def index(request):
-    return HttpResponse("hola")
-
-
 # generics views
 class TeamsListView(ListAPIView):
+    
     serializer_class = TeamSerializer
+    
+    
     def get_queryset(self):
         return Team.objects.all()
 
 class TeamsCreateView(CreateAPIView):
     serializer_class = TeamSerializer
+    
     
     def post(self, request):
         serializer = self.serializer_class(data=request.data)
@@ -34,24 +30,23 @@ class TeamsCreateView(CreateAPIView):
         return Team.objects.all()
 
 class TeamDetailView(APIView):
+    
+    
     def get(self, request, id_team):
         team = Team.objects.get(id_team=id_team)
         serializer = TeamSerializer(team)
         return Response(serializer.data)
 
 
+# ApiView
 class TeamApiView(APIView):
-    # def get(self, request):
-    #     team = Team.objects.all()
-    #     serializer = TeamSerializer(team, many=True)
-    #     return Response(serializer.data)
+    
     
     def get(self, request):
-        team = Team.objects.avg_sustitutes_players()
-        #print(team[0].player)
-        #serializer = TeamSerializer(team, many=True)
-        #return Response(serializer.data)
-        return Response({'promedio jugadores por equipo' : team})
+        team = Team.objects.all()
+        serializer = TeamSerializer(team, many=True)
+        return Response(serializer.data)
+
     
     def post(self, request, format=None):
         serializer = TeamSerializer(data=request.data)
@@ -59,6 +54,7 @@ class TeamApiView(APIView):
             serializer.save()
             return Response({"succes":"The team has been created succesfully"}, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
     
     def put(self, request, id_team, format=None):
         team = Team.objects.get(id_team=id_team)
@@ -67,6 +63,7 @@ class TeamApiView(APIView):
             serializer.save()
             return Response({"succes":"The team has been updated succesfully"}, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
     def delete(self, request, id_team, format=None):
         team = Team.objects.get(id_team=id_team)

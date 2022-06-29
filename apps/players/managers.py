@@ -4,14 +4,18 @@ from datetime import date, timedelta, datetime
 
 class PlayerManager(models.Manager):
     
+    
     def younger_player(self):
         return self.all().order_by('-date_born')[0]
+    
     
     def older_player(self):
         return self.all().order_by('date_born')[0]
     
+    
     def count_substitutes(self):
         return self.filter(titular=False).count()
+    
     
     def avg_age(self):
         return (

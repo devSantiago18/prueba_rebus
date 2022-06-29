@@ -17,6 +17,7 @@ class CoachingStaff(models.Model):
     # My managers
     objects = StaffCoachManager()
 
+
     class Meta:
         db_table = 'coachingstaff'
         unique_together = ['name', 'last_name']

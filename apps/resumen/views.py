@@ -10,8 +10,9 @@ from ..teams.serializers import TeamSerializer
 from ..staff.models import CoachingStaff
 from ..staff.serializers import CoachingStaffSerializer
 
-
 class ResumenApiView(APIView):
+    
+    
     def get(self, request, *args, **kwargs):
         context = {
             'Total Equipos registrados' : Team.objects.all().count(),
