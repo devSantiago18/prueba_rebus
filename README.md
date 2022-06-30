@@ -47,11 +47,6 @@ Los requerimientos especificos se encuentran en el archivo requeriments.txt
 
 
 
-## Authors
-
-- [@devSantiago18](https://www.github.com/octokatherine)
-
-
 ## Puesta en marcha
 
 Para hacer uso de nuestra API debemos:
@@ -104,3 +99,9 @@ Tambien puede acceder a la documentacion en:
 ```bash
   http://localhost:8000/redoc/
 ```
+
+## Authors
+
+- [@devSantiago18](https://www.github.com/octokatherine)
+- [Santiago Dangond](https://www.linkedin.com/in/santiago-dangond-460aa81b6/)
+
