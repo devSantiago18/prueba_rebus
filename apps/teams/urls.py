@@ -1,13 +1,9 @@
-from django.urls import path
+from django.urls import path, re_path, include
+from rest_framework.routers import DefaultRouter
 from . import views
 
-urlpatterns = [
-    path('all/', views.TeamApiView.as_view()),
-    path('detail/<int:id_team>', views.TeamDetailView.as_view()),
-    path('create/', views.TeamApiView.as_view()),
-    path('update/<int:id_team>', views.TeamApiView.as_view()),
-    path('delete/<int:id_team>', views.TeamApiView.as_view()),
-    
-    
-    
-]
+router = DefaultRouter()
+router.register(r'teams', views.TeamViewSet, basename='Teams')
+
+urlpatterns = router.urls
+
