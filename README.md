@@ -102,6 +102,6 @@ Tambien puede acceder a la documentacion en:
 
 ## Authors
 
-- [@devSantiago18](https://www.github.com/octokatherine)
+- [@devSantiago18](https://www.github.com/devSantiago18/)
 - [Santiago Dangond](https://www.linkedin.com/in/santiago-dangond-460aa81b6/)
 
